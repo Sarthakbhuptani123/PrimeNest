@@ -1,0 +1,104 @@
+@import "../../responsive.scss";
+
+.listPage {
+  display: flex;
+  flex-direction: column; // Top-down layout for Search then Content
+  height: 100%;
+  width: 100%;
+  background-color: var(--bg-main);
+  color: var(--text-main);
+  overflow: hidden;
+  padding-top: 110px; // Clear fixed navbar (Desktop)
+
+  @include sm {
+    padding-top: 100px;
+  }
+
+  @include md {
+    height: auto;
+    overflow-y: visible;
+  }
+
+  /* Full Width Search Section */
+  .search-container {
+    padding: 0 50px 20px 50px;
+    width: 100%;
+    position: relative;
+    z-index: 100;
+
+    @include md {
+      padding: 0 20px 20px 20px;
+    }
+  }
+
+  /* Split Layout for Listing & Map */
+  .content-split {
+    display: flex;
+    flex: 1;
+    overflow: hidden; // Ensures map and list scroll independently if needed
+
+    @include md {
+      flex-direction: column;
+      height: auto;
+      overflow: visible;
+    }
+
+    .listContainer {
+      flex: none;
+      width: 100%;
+      height: 100%;
+
+      @include md {
+        width: 100%;
+        height: auto;
+      }
+
+      .wrapper {
+        height: 100%;
+        padding: 0 20px 20px 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        overflow-y: auto;
+
+        // Hide Scrollbar
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+
+        &::-webkit-scrollbar {
+          display: none;
+        }
+
+        @include md {
+          padding: 0 20px 20px 20px;
+          height: auto;
+          overflow-y: visible;
+        }
+
+        .card-grid {
+          display: grid;
+          grid-template-columns: 1fr 1fr; // Enforce 2 columns
+          gap: 20px;
+
+          @include md {
+            grid-template-columns: 1fr;
+          }
+        }
+      }
+    }
+
+    .mapContainer {
+      flex: none;
+      width: 40%;
+      height: 100%;
+      background-color: #222;
+      z-index: 10;
+
+      @include md {
+        width: 100%;
+        height: 400px;
+        margin-top: 20px;
+      }
+    }
+  }
+}

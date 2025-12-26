@@ -1,0 +1,276 @@
+@import "../../responsive.scss";
+
+.editPostPage {
+    height: 100%;
+    display: flex;
+    background-color: var(--bg-main);
+    color: var(--text-main);
+    overflow: hidden;
+
+    .editPostContainer {
+        flex: 3;
+        display: flex;
+        overflow-y: scroll; // Inner scroll
+        height: 100%;
+
+        /* Hide scrollbar */
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+
+        &::-webkit-scrollbar {
+            display: none;
+        }
+
+        @include md {
+            flex-direction: column;
+            overflow-y: visible;
+        }
+
+        .formSection {
+            flex: 3;
+            padding: 50px;
+            padding-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+
+            @include md {
+                padding: 20px;
+            }
+
+            h1 {
+                font-weight: 300;
+                font-family: 'Playfair Display', serif;
+                font-size: 32px;
+                color: var(--text-main);
+                margin-bottom: 10px;
+                text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            }
+
+            .wrapper {
+                form {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 25px;
+
+                    .section-title {
+                        font-size: 18px;
+                        font-weight: 600;
+                        color: var(--primary);
+                        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+                        padding-bottom: 10px;
+                        margin-top: 10px;
+                    }
+
+                    .input-grid {
+                        display: grid;
+                        grid-template-columns: repeat(3, 1fr);
+                        gap: 20px;
+
+                        @include sm {
+                            grid-template-columns: 1fr;
+                        }
+
+                        &.three-col {
+                            grid-template-columns: repeat(3, 1fr);
+
+                            @include sm {
+                                grid-template-columns: 1fr;
+                            }
+                        }
+
+                        .item {
+                            display: flex;
+                            flex-direction: column;
+                            gap: 8px;
+
+                            &.full-width {
+                                grid-column: 1 / -1;
+                            }
+
+                            label {
+                                font-size: 12px;
+                                font-weight: 600;
+                                color: var(--text-soft);
+                                text-transform: uppercase;
+                            }
+
+                            input,
+                            select {
+                                padding: 15px;
+                                border-radius: 8px;
+                                border: 1px solid rgba(255, 255, 255, 0.1);
+                                font-size: 14px;
+                                background-color: rgba(255, 255, 255, 0.05);
+                                color: var(--text-main);
+                                outline: none;
+                                transition: all 0.3s;
+
+                                &:focus {
+                                    border-color: var(--primary);
+                                    box-shadow: 0 0 10px rgba(212, 175, 55, 0.1);
+                                    background-color: rgba(0, 0, 0, 0.2);
+                                }
+
+                                option {
+                                    background-color: #1a1a1a;
+                                }
+                            }
+                        }
+                    }
+
+                    .description {
+                        display: flex;
+                        flex-direction: column;
+                        gap: 10px;
+
+                        label {
+                            font-size: 12px;
+                            font-weight: 600;
+                            color: var(--text-soft);
+                            text-transform: uppercase;
+                        }
+
+                        .editor {
+                            background: rgba(255, 255, 255, 0.05);
+                            border-radius: 8px;
+                            border: 1px solid rgba(255, 255, 255, 0.1);
+
+                            /* Quill Overrides for Dark Mode */
+                            .ql-toolbar {
+                                border-color: rgba(255, 255, 255, 0.1);
+                                color: white;
+                            }
+
+                            .ql-container {
+                                border-color: rgba(255, 255, 255, 0.1);
+                                color: white;
+                                min-height: 150px;
+                                font-size: 16px;
+                            }
+
+                            .ql-stroke {
+                                stroke: var(--text-soft);
+                            }
+
+                            .ql-fill {
+                                fill: var(--text-soft);
+                            }
+
+                            .ql-picker {
+                                color: var(--text-soft);
+                            }
+                        }
+                    }
+
+                    .updateButton {
+                        width: 100%;
+                        padding: 20px;
+                        border: none;
+                        cursor: pointer;
+                        background-color: var(--primary);
+                        color: black;
+                        font-weight: bold;
+                        font-size: 16px;
+                        border-radius: 8px;
+                        margin-top: 20px;
+                        transition: all 0.3s;
+
+                        &:hover {
+                            transform: translateY(-3px);
+                            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+                        }
+                    }
+
+                    .error {
+                        color: #ff4444;
+                        font-size: 14px;
+                    }
+                }
+            }
+        }
+
+        .sideContainer {
+            flex: 2;
+            background-color: var(--bg-soft);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            border-left: 1px solid rgba(255, 255, 255, 0.05);
+
+            @include md {
+                border-left: none;
+                padding: 50px 20px;
+                background: transparent;
+            }
+
+            .upload-section {
+                padding: 20px;
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+                text-align: center;
+                width: 100%;
+                max-width: 400px;
+
+                h2 {
+                    font-family: 'Playfair Display', serif;
+                    color: var(--text-main);
+                }
+
+                p {
+                    color: var(--text-soft);
+                    font-size: 14px;
+                    margin-bottom: 20px;
+                }
+
+                .images-preview {
+                    display: grid;
+                    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+                    gap: 10px;
+                    margin-bottom: 20px;
+
+                    .image-wrapper {
+                        position: relative;
+                        width: 100%;
+                        height: 100px;
+
+                        img {
+                            width: 100%;
+                            height: 100%;
+                            object-fit: cover;
+                            border-radius: 8px;
+                            border: 1px solid rgba(255, 255, 255, 0.1);
+                        }
+
+                        .delete-btn {
+                            position: absolute;
+                            top: 5px;
+                            right: 5px;
+                            background: rgba(255, 0, 0, 0.7);
+                            color: white;
+                            border: none;
+                            border-radius: 50%;
+                            width: 24px;
+                            height: 24px;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            cursor: pointer;
+                            font-size: 12px;
+                            transition: 0.3s;
+                            backdrop-filter: blur(2px);
+
+                            &:hover {
+                                background: rgba(255, 0, 0, 1);
+                                transform: scale(1.1);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

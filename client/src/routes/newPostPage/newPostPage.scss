@@ -1,0 +1,285 @@
+@import "../../responsive.scss";
+
+.newPostPage {
+  min-height: 100vh;
+  background-color: var(--bg-main);
+  color: var(--text-main);
+  padding: 130px 40px 40px;
+  overflow-y: auto;
+
+  @include sm {
+    padding: 100px 20px 20px;
+  }
+
+  .newPostContainer {
+    display: flex;
+    gap: 30px;
+
+    @include md {
+      flex-direction: column;
+    }
+
+    .formSection {
+      flex: 3;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(212, 175, 55, 0.15);
+      border-radius: 12px;
+      backdrop-filter: blur(10px);
+      padding: 30px;
+
+      h1 {
+        font-family: 'Playfair Display', serif;
+        font-size: 32px;
+        margin-bottom: 30px;
+        color: var(--text-main);
+        // border-bottom: 1px solid rgba(255,255,255,0.05);
+        // padding-bottom: 20px;
+      }
+
+      .wrapper {
+        form {
+          display: flex;
+          flex-direction: column;
+          gap: 25px;
+
+          .section-title {
+            font-size: 18px;
+            font-weight: 500;
+            color: var(--primary);
+            margin-bottom: 15px;
+            margin-top: 10px;
+            border-left: 3px solid var(--primary);
+            padding-left: 10px;
+          }
+
+          .input-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+
+            &.three-col {
+              grid-template-columns: repeat(3, 1fr);
+
+              @include sm {
+                grid-template-columns: 1fr;
+              }
+            }
+
+            @include sm {
+              grid-template-columns: 1fr;
+            }
+
+            .item {
+              display: flex;
+              flex-direction: column;
+              gap: 8px;
+
+              &.full-width {
+                grid-column: 1 / -1;
+              }
+
+              label {
+                font-size: 14px;
+                color: var(--text-soft);
+              }
+
+              input,
+              select {
+                padding: 15px;
+                background: rgba(0, 0, 0, 0.2);
+                border: 1px solid rgba(255, 255, 255, 0.1);
+                border-radius: 5px;
+                color: var(--text-main);
+                outline: none;
+                transition: 0.3s;
+
+                &::placeholder {
+                  color: rgba(255, 255, 255, 0.3);
+                }
+
+                &:focus {
+                  border-color: var(--primary);
+                  background: rgba(0, 0, 0, 0.4);
+                }
+
+                // Select arrow color fix
+                option {
+                  background-color: var(--bg-main);
+                  color: var(--text-main);
+                }
+              }
+            }
+          }
+
+          .item.description {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+
+            .label-row {
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+
+              label {
+                font-size: 14px;
+                color: var(--text-soft);
+              }
+
+              .ai-generate-btn {
+                background: linear-gradient(135deg, var(--primary) 0%, #B8860B 100%);
+                color: #000;
+                border: none;
+                padding: 8px 16px;
+                border-radius: 20px;
+                font-size: 12px;
+                font-weight: 700;
+                display: flex;
+                align-items: center;
+                gap: 8px;
+                cursor: pointer;
+                transition: 0.3s;
+                box-shadow: 0 4px 15px rgba(212, 175, 55, 0.2);
+
+                &:hover:not(:disabled) {
+                  transform: translateY(-2px);
+                  box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+                  background: linear-gradient(135deg, #f1c40f 0%, var(--primary) 100%);
+                }
+
+                &:disabled {
+                  opacity: 0.7;
+                  cursor: not-allowed;
+                  background: #444;
+                  color: #aaa;
+                }
+
+                .spin {
+                  animation: rotate 2s linear infinite;
+                }
+              }
+            }
+
+            .editor {
+              .ql-toolbar {
+                background: #ddd;
+                border-radius: 5px 5px 0 0;
+              }
+
+              .ql-container {
+                height: 200px;
+                background: rgba(255, 255, 255, 0.9);
+                color: #000;
+                border-radius: 0 0 5px 5px;
+                font-size: 16px;
+              }
+            }
+          }
+
+          .sendButton {
+            padding: 15px;
+            margin-top: 20px;
+            background-color: var(--primary);
+            color: #000;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+
+            &:hover {
+              box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+            }
+          }
+
+          .error {
+            color: red;
+            font-size: 14px;
+          }
+        }
+      }
+    }
+
+    .sideContainer {
+      flex: 1.5;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(212, 175, 55, 0.15);
+      border-radius: 12px;
+      padding: 30px;
+      height: fit-content;
+
+      .upload-section {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+
+        h2 {
+          font-family: 'Playfair Display', serif;
+          font-size: 24px;
+          color: var(--text-main);
+        }
+
+        p {
+          color: var(--text-soft);
+          font-size: 14px;
+        }
+
+        .images-preview {
+          display: grid;
+          grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+          gap: 10px;
+          margin: 10px 0;
+
+          .image-wrapper {
+            position: relative;
+            width: 100%;
+            height: 100px;
+
+            img {
+              width: 100%;
+              height: 100%;
+              object-fit: cover;
+              border-radius: 5px;
+              border: 1px solid rgba(212, 175, 55, 0.2);
+            }
+
+            .delete-btn {
+              position: absolute;
+              top: 5px;
+              right: 5px;
+              background: rgba(255, 0, 0, 0.7);
+              color: white;
+              border: none;
+              border-radius: 50%;
+              width: 24px;
+              height: 24px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              cursor: pointer;
+              font-size: 12px;
+              transition: 0.3s;
+              backdrop-filter: blur(2px);
+
+              &:hover {
+                background: rgba(255, 0, 0, 1);
+                transform: scale(1.1);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}

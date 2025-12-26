@@ -1,0 +1,122 @@
+@import "../../responsive.scss";
+
+.visitModalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    backdrop-filter: blur(5px);
+
+    .visitModalContainer {
+        width: 400px;
+        background: rgba(20, 20, 20, 0.95);
+        border: 1px solid var(--primary);
+        border-radius: 12px;
+        padding: 30px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+
+        h2 {
+            font-family: 'Playfair Display', serif;
+            color: var(--primary);
+            text-align: center;
+            font-size: 24px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+
+            label {
+                font-size: 14px;
+                color: var(--text-soft);
+            }
+
+            input {
+                padding: 12px;
+                background: rgba(255, 255, 255, 0.05);
+                border: 1px solid rgba(255, 255, 255, 0.1);
+                border-radius: 5px;
+                color: var(--text-main);
+                font-family: inherit;
+                outline: none;
+
+                &:focus {
+                    border-color: var(--primary);
+                }
+
+                &::-webkit-calendar-picker-indicator {
+                    filter: invert(1); // Make calendar icon white
+                    cursor: pointer;
+                }
+            }
+
+            .error {
+                color: #ff5555;
+                font-size: 12px;
+            }
+
+            .buttons {
+                display: flex;
+                gap: 15px;
+                margin-top: 10px;
+
+                button {
+                    flex: 1;
+                    padding: 12px;
+                    border-radius: 5px;
+                    border: none;
+                    cursor: pointer;
+                    font-weight: bold;
+                    transition: 0.3s;
+
+                    &.cancel {
+                        background: transparent;
+                        border: 1px solid rgba(255, 255, 255, 0.2);
+                        color: var(--text-main);
+
+                        &:hover {
+                            background: rgba(255, 255, 255, 0.1);
+                        }
+                    }
+
+                    &.submit {
+                        background: var(--primary);
+                        color: #000;
+
+                        &:hover:not(:disabled) {
+                            background: #fff;
+                        }
+
+                        &:disabled {
+                            opacity: 0.7;
+                            cursor: not-allowed;
+                        }
+                    }
+                }
+            }
+        }
+
+        .success {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            color: var(--text-main);
+
+            h3 {
+                color: #00ff88;
+                font-size: 22px;
+            }
+        }
+    }
+}

@@ -1,0 +1,155 @@
+@import "../../responsive.scss";
+
+.footer {
+    background: #020202;
+    /* Match Home bg-main or go slightly deeper */
+    border-top: 1px solid var(--border);
+    padding: 100px 0 30px;
+    color: #fff;
+    font-family: "Plus Jakarta Sans", sans-serif;
+
+    .container {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 0 40px;
+
+        @include md {
+            padding: 0 20px;
+        }
+    }
+
+    .footer-top {
+        display: flex;
+        justify-content: space-between;
+        gap: 80px;
+        margin-bottom: 80px;
+
+        @include lg {
+            flex-direction: column;
+            gap: 50px;
+        }
+
+        .footer-brand {
+            flex: 1;
+            max-width: 350px;
+
+            .logo {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                margin-bottom: 25px;
+                text-decoration: none;
+
+                img {
+                    width: 28px;
+                    height: 28px;
+                }
+
+                span {
+                    font-family: "Playfair Display", serif;
+                    font-size: 24px;
+                    font-weight: 700;
+                    color: #fff;
+                }
+            }
+
+            p {
+                color: var(--text-soft);
+                font-size: 14px;
+                line-height: 1.6;
+                margin-bottom: 30px;
+            }
+
+            .socials {
+                display: flex;
+                gap: 20px;
+
+                a {
+                    color: var(--primary);
+                    font-weight: 700;
+                    font-size: 12px;
+                    text-transform: uppercase;
+                    text-decoration: none;
+                    transition: 0.3s;
+
+                    &:hover {
+                        color: #fff;
+                    }
+                }
+            }
+        }
+
+        .footer-links {
+            flex: 2;
+            display: flex;
+            justify-content: space-between;
+            gap: 40px;
+
+            @include sm {
+                flex-direction: column;
+            }
+
+            .link-col {
+                display: flex;
+                flex-direction: column;
+                gap: 15px;
+
+                h4 {
+                    font-family: "Playfair Display", serif;
+                    font-size: 18px;
+                    margin-bottom: 10px;
+                    color: #fff;
+                }
+
+                a,
+                span {
+                    color: var(--text-soft);
+                    text-decoration: none;
+                    font-size: 14px;
+                    transition: 0.3s;
+
+                    &:hover {
+                        color: var(--primary);
+                        transform: translateX(5px);
+                    }
+                }
+
+                span {
+                    pointer-events: none;
+                }
+
+                /* Contact info not links */
+            }
+        }
+    }
+
+    .footer-bottom {
+        border-top: 1px solid rgba(255, 255, 255, 0.05);
+        padding-top: 30px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: var(--text-soft);
+        font-size: 12px;
+
+        @include sm {
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .legal {
+            display: flex;
+            gap: 30px;
+
+            a {
+                color: var(--text-soft);
+                text-decoration: none;
+                transition: 0.3s;
+
+                &:hover {
+                    color: #fff;
+                }
+            }
+        }
+    }
+}
