@@ -18,30 +18,7 @@
   --font-sans: 'Plus Jakarta Sans', sans-serif;
 }
 
-[data-theme='light'] {
-  --bg-main: #f8faff;
-  /* Very light blue-white */
-  --bg-soft: #ffffff;
-  /* Pure white */
-  --bg-card: #ffffff;
-  /* Pure white */
-  --primary: #003366;
-  /* Deep navy blue */
-  --primary-hover: #001f3f;
-  /* Darker navy */
-  --accent: #004080;
-  /* Royal blue */
-  --text-main: #0a0a0a;
-  /* Near black */
-  --text-soft: #4a4a4a;
-  /* Dark grey */
-  --border: rgba(0, 51, 102, 0.1);
-  /* Navy border */
-  --nav-bg: rgba(255, 255, 255, 0.85);
-  --shadow-card: 0 10px 40px rgba(0, 51, 102, 0.08);
-  --btn-bg-hover: #003366;
-  --btn-text: #ffffff;
-}
+
 
 
 * {

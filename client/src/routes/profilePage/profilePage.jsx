@@ -42,10 +42,20 @@ function ProfilePage() {
   useEffect(() => {
     const fetchVisits = async () => {
       try {
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);
+
+        const isFutureOrToday = (dateStr) => {
+          const visitDate = new Date(dateStr);
+          visitDate.setHours(0, 0, 0, 0);
+          return visitDate >= today;
+        };
+
         const requestsRes = await apiRequest.get("/visits/requests");
-        setVisitRequests(requestsRes.data);
+        setVisitRequests(requestsRes.data.filter((v) => isFutureOrToday(v.date)));
+
         const myVisitsRes = await apiRequest.get("/visits");
-        setMyVisits(myVisitsRes.data);
+        setMyVisits(myVisitsRes.data.filter((v) => isFutureOrToday(v.date)));
       } catch (err) {
         console.log(err);
       }
