@@ -47,7 +47,7 @@
     justify-content: center;
     gap: 40px;
 
-    @include lg {
+    @include md {
       display: none;
     }
 
@@ -238,7 +238,7 @@
       color: var(--primary);
     }
 
-    @include lg {
+    @include md {
       display: block;
     }
   }

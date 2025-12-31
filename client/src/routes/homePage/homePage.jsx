@@ -3,12 +3,13 @@ import SearchBar from "../../components/searchBar/SearchBar";
 import "./homePage.scss";
 import { AuthContext } from "../../context/AuthContext";
 import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import apiRequest from "../../lib/apiRequest";
 
 function HomePage() {
   const { currentUser } = useContext(AuthContext);
   const [features, setFeatures] = useState([]);
+  const location = useLocation();
 
   useEffect(() => {
     const fetchFeatures = async () => {
@@ -23,6 +24,19 @@ function HomePage() {
     };
     fetchFeatures();
   }, []);
+
+  useEffect(() => {
+    // Handle hash scrolling
+    if (location.hash) {
+      const id = location.hash.replace("#", "");
+      const element = document.getElementById(id);
+      if (element) {
+        setTimeout(() => {
+          element.scrollIntoView({ behavior: "smooth" });
+        }, 100);
+      }
+    }
+  }, [location]);
 
   const fadeInUp = {
     initial: { opacity: 0, y: 40 },
@@ -126,7 +140,7 @@ function HomePage() {
 
 
       {/* --- TAILORED EXPERIENCE (DETAILED) --- */}
-      <section className="services detailed">
+      <section className="services detailed" id="about">
         <div className="container">
           <div className="section-head">
             <motion.h2 {...fadeInUp}>Tailored Experience</motion.h2>
@@ -220,7 +234,7 @@ function HomePage() {
       </section>
 
       {/* --- ELITE AGENTS --- */}
-      <section className="agents-v14">
+      <section className="agents-v14" id="agents">
         <div className="container">
           <div className="section-head">
             <motion.h2 {...fadeInUp}>Elite Representatives</motion.h2>
