@@ -2,7 +2,7 @@ import { Server } from "socket.io";
 
 const io = new Server({
   cors: {
-    origin: ["http://localhost:5173", "http://localhost:5175", "http://localhost:5177"],
+    origin: ["http://localhost:5173", "http://localhost:5175", "http://localhost:5177", process.env.CLIENT_URL, "https://primeneste.netlify.app"],
     methods: ["GET", "POST"],
     credentials: true,
   },
@@ -40,4 +40,4 @@ io.on("connection", (socket) => {
   });
 });
 
-io.listen("4000");
+io.listen(process.env.PORT || 4000);
