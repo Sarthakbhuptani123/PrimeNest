@@ -4,7 +4,8 @@
   "type": "module",
   "main": "app.js",
   "scripts": {
-    "start": "npx prisma generate && node app.js"
+    "start": "npx prisma generate && node app.js",
+    "postinstall": "prisma generate"
   },
   "dependencies": {
     "@prisma/client": "^5.11.0",
