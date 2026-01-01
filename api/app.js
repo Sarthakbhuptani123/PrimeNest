@@ -13,7 +13,7 @@ import aiRoute from "./routes/ai.route.js";
 
 const app = express();
 
-app.use(cors({ origin: [process.env.CLIENT_URL, "http://localhost:5175", "http://localhost:5173", "https://prime-nest-ysj2.vercel.app"], credentials: true }));
+app.use(cors({ origin: [process.env.CLIENT_URL, "http://localhost:5175", "http://localhost:5173", "https://prime-nest-tu17.vercel.app/"], credentials: true }));
 app.use(express.json());
 app.use(cookieParser());
 
