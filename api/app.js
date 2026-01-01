@@ -28,10 +28,8 @@ app.use("/api/ai", aiRoute);
 
 // Only listen locally or if explicitly started (Vercel handles the export)
 // Listen if strictly in Dev OR if running on Render (Production)
-if (process.env.NODE_ENV !== "production" || process.env.RENDER) {
-  app.listen(process.env.PORT || 8800, () => {
-    console.log("Server is running!");
-  });
-}
+app.listen(process.env.PORT || 8800, () => {
+  console.log("Server is running!");
+});
 
 export default app;
