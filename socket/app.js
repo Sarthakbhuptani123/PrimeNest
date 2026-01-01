@@ -2,7 +2,7 @@ import { Server } from "socket.io";
 
 const io = new Server({
   cors: {
-    origin: ["http://localhost:5173", "http://localhost:5175", "http://localhost:5177", process.env.CLIENT_URL, "https://primeneste.netlify.app"],
+    origin: ["http://localhost:5173", "http://localhost:5175", "http://localhost:5177", process.env.CLIENT_URL, "https://primeneste.netlify.app", "https://prime-nest-ysj2.vercel.app"],
     methods: ["GET", "POST"],
     credentials: true,
   },
