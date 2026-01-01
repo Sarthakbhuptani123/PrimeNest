@@ -26,6 +26,9 @@ app.use("/api/messages", messageRoute);
 app.use("/api/visits", visitRoute);
 app.use("/api/ai", aiRoute);
 
-app.listen(8800, () => {
-  console.log("Server is running!");
+const PORT = process.env.PORT || 8800;
+
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
 });
+
